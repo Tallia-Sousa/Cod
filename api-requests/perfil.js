@@ -1,3 +1,5 @@
+
+
 const recuperarToken = () => {
     const token = localStorage.getItem('token');
 
@@ -6,38 +8,43 @@ const recuperarToken = () => {
         return;
     }
 
-    // Função de requisição
-    const perfil = async () => {
-        try {
-            const response = await fetch('https://simple-porter-production.up.railway.app/users/perfil', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                    'Accept': "application/json"
-                }
-            });
-
+    // função requisiçao
+    const perfil = () => {
+        fetch('https://simple-porter-production.up.railway.app/users/perfil', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                "Content-Type": "application/json",
+                'Accept': "application/json"
+            }
+        })
+        .then(response => {
             if (!response.ok) {
                 if (response.status === 401) {
-                    // Não faz redirecionamento manual, deixa o servidor enviar status 401
-                    throw new Error('Não autenticado');
+                    window.location.href = "/index.html";
                 }
                 throw new Error(`${response.status} - ${response.statusText}`);
             }
+            return response.json();
+        })
+        .then(data => {
+         
+			document.getElementById('nome').textContent = data.nome;
 
-            const data = await response.json();
-            document.getElementById('nome').textContent = data.nome;
-        } catch (erro) {
+		})
+        .catch(erro => {
             console.error('Erro na requisição:', erro);
-        } finally {
-            // Agendar a próxima execução após 15 minutos (900000 milissegundos)
-            setTimeout(recuperarToken, 900000);
-        }
+        })
+        .finally(() => {
+            // Agendar a próxima execução após 1 horas
+            setTimeout(perfil,3600000);
+        });
     };
 
-    // Chamar a função uma vez imediatamente
+    // Chamando a função de retornar dados de perfil
     perfil();
-};
+    
+}
 
 // Chamando a função principal
+
 recuperarToken();
