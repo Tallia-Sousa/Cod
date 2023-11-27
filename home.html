@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="api-requests/home.js" defer></script>
+    <script src="api-requests/sair.js" defer></script>
+
+    
+
+</head>
+<body>
+   <div class="gradient">
+      <span class="color-1"></span>
+      <span class="color-2"></span>
+      <span class="color-3"></span>
+      <span class="color-4"></span>
+      <span class="color-5"></span>
+      
+   </div>
+   
+   <div class="content-wrapper">
+      <header class="header">
+         <section class="flex">
+            <a href="index.html" class="logo">CodeRise</a>
+            <div class="icons">
+                  <div id="menu-btn" class="fas fa-bars"></div>
+                  <div id="user-btn" class="fas fa-user"></div>
+                  <div id="toggle-btn" class="fas fa-sun"></div>
+            </div>
+      
+            <div class="profile">
+                  <img src="images/pic-1.svg" class="image" alt="">
+                  <h3 class="name">Aluno</h3>
+                  <p class="role">estudante</p>
+                  <a href="profile.html" class="btn">ver perfil</a>
+                  <a href="index.html" class="option-btn">Sair</a>
+            </div>
+         </section>
+      </header>
+      
+      <div class="side-bar">
+      
+         <div id="close-btn">
+            <i class="fas fa-times"></i>
+         </div>
+         <br><br><br>
+         <nav class="navbar">
+            <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+            <a href="#cursos"><i class="fas fa-graduation-cap"></i><span>cursos</span></a>
+            <a href="sobreNos.html"><i class="fas fa-question"></i><span>sobre nós</span></a>
+         </nav>
+      
+      </div>
+      
+      
+      
+      <section class="home-grid">
+         <h1 class="heading">opções</h1>
+      
+         <div class="box-container">
+            <div class="box">
+                  <h3 class="title">Foco em:</h3>
+                  <div class="flex">
+                     <a href="#"><i class="fas fa-code"></i><span>desenvolvimento</span></a>
+                     <a href="#"><i class="fas fa-pen"></i><span>design</span></a>
+                     <a href="#"><i class="fas fa-chart-line"></i><span>qualidade</span></a>
+                     <a href="#"><i class="fas fa-cog"></i><span>software</span></a>
+                  </div>
+               </div>
+      
+               <div class="box">
+                  <h3 class="title">tópicos populares</h3>
+                  <div class="flex">
+                     <a href="#"><i class="fab fa-html5"></i><span>HTML</span></a>
+                     <a href="#"><i class="fab fa-css3"></i><span>CSS</span></a>
+                     <a href="#"><i class="fab fa-js"></i><span>javascript</span></a>
+                     <a href="#"><i class="fab fa-react"></i><span>react</span></a>
+                     <a href="#"><i class="fab fa-php"></i><span>PHP</span></a>
+                     <a href="#"><i class="fab fa-bootstrap"></i><span>bootstrap</span></a>
+                  </div>
+               </div>
+      
+         </div>
+      </section>
+      
+      
+      <section id="cursos" class="courses">
+      
+         <h1 class="heading">Áreas dos Cursos</h1>
+      
+         <div class="box-container">
+      
+            <div class="box">
+      
+               <div class="thumb">
+                  <img src="images/thumb-1.svg" alt="">
+                  <span>10 videos</span>
+               </div>
+               <h3 class="title">Bases da Programação</h3>
+               <a href="playlistBases.html" class="inline-btn">ver curso</a>
+            </div>
+      
+            <div class="box">
+      
+               <div class="thumb">
+                  <img src="images/thumb-2.svg" alt="">
+                  <span>10 videos</span>
+               </div>
+               <h3 class="title">desenvolvimento front-end</h3>
+               <a href="playlistFront.html" class="inline-btn">ver curso</a>
+            </div>
+      
+            <div class="box">
+      
+               <div class="thumb">
+                  <img src="images/thumb-3.svg" alt="">
+                  <span>10 videos</span>
+               </div>
+               <h3 class="title">desenvolvimento Back-end</h3>
+               <a href="playlistBack.html" class="inline-btn">ver curso</a>
+            </div>
+      
+            <div class="box">
+      
+               <div class="thumb">
+                  <img src="images/thumb-4.svg" alt="">
+                  <span>10 videos</span>
+               </div>
+               <h3 class="title">Quality Assurance</h3>
+               <a href="playlistQa.html" class="inline-btn">ver curso</a>
+            </div>
+      
+         </div>
+      
+      </section>
+   </div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

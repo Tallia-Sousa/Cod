@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="api-requests/login.js" defer></script>
+</head>
+<body>
+    <div class="gradient">
+        <span class="color-1"></span>
+        <span class="color-2"></span>
+        <span class="color-3"></span>
+        <span class="color-4"></span>
+        <span class="color-5"></span>
+        
+     </div>
+   <div class="content-wrapper">
+         
+    <header class="header">
+        <section class="flex">
+            <p class="logo">CodeRise</p>
+            <div class="icons">
+                <div id="menu-btn" class="fas fa-bars"></div>
+                <div id="user-btn" class="fas fa-user"></div>
+                <div id="toggle-btn" class="fas fa-sun"></div>
+            </div>
+    
+            <div class="profile">
+                <p class="aviso"><span>*</span> Faça login ou cadastre-se para acessar o perfil.</p>
+                <a href="index.html" class="btn">Fazer login</a>
+                <a href="cadastro.html" class="btn">Cadastre-se</a>
+            </div>
+        </section>
+    </header>
+    
+    <div class="side-bar">
+    
+        <div id="close-btn">
+            <i class="fas fa-times"></i>
+        </div>
+        <br><br><br>
+        <nav class="navbar">
+
+            <a href="sobreNos.html"><i class="fas fa-question"></i><span>sobre nós</span></a>
+        </nav>
+    
+    </div>
+           
+           </div>
+           <section class="form-container">
+          <form action="" method="post" enctype="multipart/form-data">
+             <h3>login</h3>
+             <p>seu email <span>*</span></p>
+             <input type="email" name="email" placeholder="email" required maxlength="50" class="box" id="email">
+             <p>sua senha <span>*</span></p>
+             <input type="password" name="senha" placeholder="senha" required maxlength="20" class="box" id="password">
+             <input type="submit" value="Fazer login" name="submit" class="btn">
+             <p><a href="recuperaSenha.html">Esqueceu Senha?</a></p>
+             <p><a href="cadastro.html">Não possui conta? Cadastre-se aqui!</a></p>
+          </form>
+       
+       </section>
+   </div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
