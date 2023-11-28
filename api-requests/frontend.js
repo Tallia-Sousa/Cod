@@ -1,4 +1,3 @@
-
 const recuperarToken = () => {
     const token = localStorage.getItem('token');
 
@@ -6,7 +5,7 @@ const recuperarToken = () => {
         window.location.href = "/index.html";
         return;
     }
-    
+
     const search = (titulo) => {
         const cursosContainer = document.getElementById('cursos-container');
         const cursos = cursosContainer.getElementsByClassName('box');
@@ -19,14 +18,12 @@ const recuperarToken = () => {
     }
 
 
-
-    // função requisiçao
-    const cursosFront = () => {
-        fetch('https://simple-porter-production.up.railway.app/cursos/frontend', {
+    const cursosFrontend = () => {
+        fetch(`https://simple-porter-production.up.railway.app/cursos/frontend`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
-                "Content-Type": "application/json",
-                'Accept': "application/json"
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         })
         .then(response => {
@@ -39,33 +36,25 @@ const recuperarToken = () => {
             return response.json();
         })
         .then(data => {
-            //  dados da resposta
-            const cursosContainer = document.getElementById
-            ('cursos-container');
+            const cursosContainer = document.getElementById('cursos-container');
+          
             if (data.length > 0) {
-
-                     //cria um array
                 const links = data.map((curso, index) => {
-                    //criar link para atribuir cursos
                     const link = document.createElement('a');
-                    link.href = curso.linkPlaylist;
+                    link.href = curso.playlist;
                     link.classList.add('box');
-                   //criar elemento icon-video
+
                     const playIcon = document.createElement('i');
-                    //add css
                     playIcon.classList.add('fas', 'fa-play');
-                    //adicionar ao link
                     link.appendChild(playIcon);
 
-                    //criando imagem
                     const img = document.createElement('img');
-                    img.src = `images/post-1-${index + 1}.png`; 
+                    img.src = `images/post-1-${index + 1}.png`;
                     link.appendChild(img);
 
-                    const h3 = document.createElement('h3');
+                    const h3 = document.createElesment('h3');
                     h3.textContent = curso.titulo;
                     link.appendChild(h3);
-                    //coversar com o james e perguntar se precisa de titulo msm
 
                     return link;
                 });
@@ -75,35 +64,33 @@ const recuperarToken = () => {
                 console.log('Nenhum curso encontrado para esta área.');
             }
         })
-
         .catch(erro => {
             console.error('Erro na requisição:', erro);
         })
         .finally(() => {
             // Agendar a próxima execução após 1 horas
-            setTimeout(cursosFront, 3600000);
+            setTimeout(() => cursosFrontend(), 3600000);
         });
     };
+
     
+document.getElementById('searchButton').addEventListener('click', function (event) {
+    event.preventDefault();
+    const titulo = document.getElementById('search').value.trim().toLowerCase();
+    search(titulo);
+});
 
-    // Chamando a função trazer cursos
-    cursosFront();
-    document.getElementById('searchButton').addEventListener('click', function (event) {
-        event.preventDefault();
-        const titulo = document.getElementById('search').value.trim().toLowerCase();
-        search(titulo);
-    });
-    
-    document.getElementById('search').addEventListener('input', function () {
-        const titulo = document.getElementById('search').value.trim().toLowerCase();
-        search(titulo);
-    });
-    
+document.getElementById('search').addEventListener('input', function () {
+    const titulo = document.getElementById('search').value.trim().toLowerCase();
+    search(titulo);
+});
+ 
 
-}
+    // funçao de cursos
+    cursosFrontend();
+};
 
-// Chamando a função principal
-
+// funçao de token
 recuperarToken();
 
 
