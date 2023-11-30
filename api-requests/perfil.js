@@ -24,11 +24,11 @@ const recuperarToken = () => {
                 }
                 throw new Error(`${response.status} - ${response.statusText}`);
             }
-            return response.json();
+            return response.text();
         })
         .then(data => {
-         
-			document.getElementById('nome').textContent = data.nome;
+            const jsonObject = { nome: data };
+			document.getElementById('nome').textContent = jsonObject.nome;
 
 		})
         .catch(erro => {
