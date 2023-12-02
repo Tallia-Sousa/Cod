@@ -10,7 +10,7 @@ const recuperarToken = () => {
 
 const verificarTokenExpirado = (token) => {
  
-  fetch('http://localhost:8080/users/verificarTokenExpirado', {
+  fetch('https://simple-porter-production.up.railway.app/users/verificarTokenExpirado', {
     headers: {
       'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
@@ -19,10 +19,13 @@ const verificarTokenExpirado = (token) => {
     method: 'POST'
   })
   .then(function (response) {
+    if(!response.ok){
     if (response.status == 401) {
       window.location.href = "/index.html";
     
     }
+    throw new Error(`${response.status} - ${response.statusText}`);
+  }
     
   })
   .catch(function (error) {
@@ -52,6 +55,7 @@ const sugestoes = (token) => {
       window.location.href = "/index.html";
       
     }
+  
     else if (response.status == 422) {
       console.log("sugestao ja existe");
       // mensagem avisando que a sugestao ja existe e por isso nao pode ser enviada
