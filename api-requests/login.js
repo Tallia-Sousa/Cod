@@ -26,7 +26,7 @@ function autenticarUsuario(){
 	} else if (response.status === 200) {
 	  response.json().then(function (data) {
 		var token = data.token;
-		console.log("Token recebido:", token);
+
 		// Armazenando token gerado pro usuario no localStorage
 		localStorage.setItem("token", token);
 

@@ -3,7 +3,7 @@ const sair = () => {
     // Remover o token do localStorage
     localStorage.removeItem('token');
   
-    // Redirecionar para a página de login
+    // Redireciona para a página de login
     window.location.href = "/index.html";
   };
   

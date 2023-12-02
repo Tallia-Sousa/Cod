@@ -26,6 +26,7 @@ const verificarToken = (token) => {
 
       //colocar uma mensagem seja bem vindo para os estudantes
     } else if (response.status === 401 || response.status ==403) {
+      
       window.location.href = "/index.html"; 
     }
   })

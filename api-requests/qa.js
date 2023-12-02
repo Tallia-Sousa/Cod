@@ -6,17 +6,6 @@ const recuperarToken = () => {
         return;
     }
 
-    const search = (titulo) => {
-        const cursosContainer = document.getElementById('cursos-container');
-        const cursos = cursosContainer.getElementsByClassName('box');
-
-        Array.from(cursos).forEach(curso => {//intera ocada elemento cursos e pega
-            const tituloCurso = curso.querySelector('h3').textContent.toLowerCase();
-            const shouldShow = tituloCurso.includes(titulo);
-            curso.style.display = shouldShow ? 'block' : 'none';
-        })
-    }
-
 
     const cursosQA = () => {
         fetch(`https://simple-porter-production.up.railway.app/cursos/qa`, {
@@ -30,6 +19,10 @@ const recuperarToken = () => {
             if (!response.ok) {
                 if (response.status === 401) {
                     window.location.href = "/index.html";
+                    return true;
+                }
+                if(response.status === 404){
+                    return true;
                 }
                 throw new Error(`${response.status} - ${response.statusText}`);
             }
@@ -56,36 +49,28 @@ const recuperarToken = () => {
                     h3.textContent = curso.titulo;
                     link.appendChild(h3);
 
+                    const autor = document.createElement('h3');
+                    autor.textContent = curso.autorPlaylist;
+                    link.appendChild(autor);
+
                     return link;
                 });
 
                 cursosContainer.append(...links);
-            } else {
-                console.log('Nenhum curso encontrado para esta área.');
-            }
+            } 
         })
         .catch(erro => {
             console.error('Erro na requisição:', erro);
         })
         .finally(() => {
             // Agendar a próxima execução após 1 hora
-            setTimeout(() => cursosQA, 3600000);
+            setTimeout(() => cursosQA(), 3600000);
         });
     };
 
-    // ouvinte pesquisa
-    document.getElementById('searchButton').addEventListener('click', function (event) {
-        event.preventDefault();
-        const titulo = document.getElementById('search').value.trim().toLowerCase();
-        search(titulo);
-    });
     
-    document.getElementById('search').addEventListener('input', function () {
-        const titulo = document.getElementById('search').value.trim().toLowerCase();
-        search(titulo);
-    });
-    
-    // funçao de cursos
+
+    // chama funçao de cursos
     cursosQA();
 }
 
