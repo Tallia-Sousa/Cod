@@ -43,7 +43,7 @@ const recuperarToken = () => {
                     link.appendChild(playIcon);
 
                     const img = document.createElement('img');
-                    img.src = `images/post-1-${index + 1}.png`;
+                    img.src = `images/thumb-back.svg`;
                     link.appendChild(img);
 
                     const h3 = document.createElement('h3');
