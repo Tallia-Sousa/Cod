@@ -812,6 +812,29 @@ flex-btn{
  .playlist-videos .box-container .box:hover h3{
     color: var(--main-color);
  }
+
+ .notification {
+   padding: 10px;
+   margin-bottom: 10px;
+   border-radius: 5px;
+   font-size: 15px;
+}
+
+.success {
+   background-color: #4CAF50;
+   color: white;
+}
+
+.error {
+   background-color: #f44336;
+   color: white;
+}
+.mensagem-erro {
+   color: #ff0000;
+   font-size: 15px;
+   margin-top: 5px;
+   display: none; /* Inicia oculto */
+}
   
  @media (max-width:1200px){
 
