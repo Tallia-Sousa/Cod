@@ -37,6 +37,7 @@ const sugestoes = () => {
     else if (response.status == 422) {
       console.log("sugestao ja existe");
       // Mensagem avisando que a sugestão já existe e por isso não pode ser enviada
+      limparCampos();
     }
     else if (response.status == 200) {
       console.log("sugestao enviada");
@@ -62,3 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
   sugestoes();
 });
 
+function limparCampos() {
+	autorPlaylist.value = "";
+	areaPlaylist.value = "";
+	linkPlaylist.value = "";
+  }
