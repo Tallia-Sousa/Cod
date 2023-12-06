@@ -3,13 +3,14 @@ const areaPlaylist = document.getElementById("area");
 const linkPlaylist = document.getElementById("link");
 const formulario = document.querySelector("form");
 
-const recuperarToken = () => {
+const recuperar = () => {
   const token = localStorage.getItem('token');
   return token;
 }
 
+
 const sugestoes = () => {
-  const token = recuperarToken();
+  const token = recuperar();
 
   if (!token) {
     window.location.href = "/index.html";
@@ -35,13 +36,18 @@ const sugestoes = () => {
       window.location.href = "/index.html";
     }
     else if (response.status == 422) {
-      console.log("sugestao ja existe");
-      // Mensagem avisando que a sugestão já existe e por isso não pode ser enviada
+      mostrarMensagemErro("Sugestao Já xiste")
       limparCampos();
+     
     }
     else if (response.status == 200) {
-      console.log("sugestao enviada");
-      // Sugestão enviada, obrigada pela sua contribuição
+      mostrarMensagemErro("Sugestao enviada")
+      limparCampos();
+    
+    }
+    else if(response.status == 400){
+      mostrarMensagemErro("Precha todos os campos corretamente")
+      limparCampos();
     }
   })
   .catch(function (error) {
@@ -58,9 +64,7 @@ const sugestoes = () => {
 formulario.addEventListener("submit", function (event) {
   event.preventDefault();
   sugestoes();
-});
-document.addEventListener("DOMContentLoaded", function () {
-  sugestoes();
+  // limparCampos()
 });
 
 function limparCampos() {
@@ -68,3 +72,17 @@ function limparCampos() {
 	areaPlaylist.value = "";
 	linkPlaylist.value = "";
   }
+
+  //mensagem
+
+  
+  const mensagemErro = document.getElementById("mensagemErro");
+   function mostrarMensagemErro(message) {
+	 mensagemErro.textContent = message;
+	 mensagemErro.style.display = "block";
+	 mensagemErro.style.fontSize = "1.8rem";  // Tamanho da fonte
+	 mensagemErro.style.textAlign = "center";  // Alinhamento no centro
+	 mensagemErro.style.color= "red"
+	 setTimeout(() => {
+	   mensagemErro.style.display = "none";
+	 }, 10000)}

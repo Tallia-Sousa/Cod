@@ -23,12 +23,15 @@ function cadastrarUsuario() {
 	  .then(function (response) {
 		if (response.status === 422) {
 		//ainda vai ser implementado mostrarMensagem 
-		  mostrarMensagem("Usuário existe, faça login");//
+		  mostrarMensagemErro("Usuário existe, faça login");//
 		  limparCampos();
 		} else if (response.status === 201) {
 		  window.location.href = "/index.html";
 		  limparCampos();
 		} 
+		else if(response.status === 400){
+			mostrarMensagemErro("Precha todos os campos corretamente")
+		}
 	  })
 	  .catch(function (error) {
 		console.error("Erro ao se cadastrar:", error);
@@ -49,5 +52,16 @@ function cadastrarUsuario() {
 	cadastrarUsuario();
   });
   
+  const mensagemErro = document.getElementById("mensagemErro");
+  function mostrarMensagemErro(message) {
+    mensagemErro.textContent = message;
+    mensagemErro.style.display = "block";
+	mensagemErro.style.fontSize = "1.8rem";  // Tamanho da fonte
+	mensagemErro.style.textAlign = "center";  // Alinhamento no centro
+	mensagemErro.style.color= "red"
+    setTimeout(() => {
+      mensagemErro.style.display = "none";
+    }, 10000);
+  }
   
   

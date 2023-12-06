@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <title>perfil</title>
+<!-- Adicione essas linhas no head da sua página -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="api-requests/sair.js" defer></script>
     <script src="api-requests/perfil.js" defer></script>
+    <script src="api-requests/sugestoes.js" defer></script>
+
+  
 </head>
 <body>
     <div class="gradient">
@@ -52,34 +59,55 @@
          
          </div>
 
-        <section class="user-profile">
+         <section class="user-profile">
             <h1 class="heading">Seu perfil</h1>
-        
             <div class="info">
-        
-               <div class="user">
-                <img src="images/pic-1.svg" alt="">
-                  <h3 id="nome"></h3>
-                  <!--<p>estudante</p>-->
-               </div>
-        
-               <div class="box-container">
-        
-                  <div class="box">
-                     <div class="flex">
-                        <!--<i class="fas fa-bookmark"></i>-->
-                        <div>
-                           <!--<span>x</span>-->
-                           <p>Encontrou um curso útil? Compartilhe aqui!</p>
-
+                <div class="user">
+                    <img src="images/pic-1.svg" alt="">
+                    <h3 id="nome"></h3>
+                </div>
+                <div class="box-container">
+                    <div class="box" class="box_s">
+                        <div class="flex">
+                            <div>
+                                <p>Encontrou um curso útil? Compartilhe aqui!</p>
+                            </div>
                         </div>
-                     </div>
-                     <a href="sugestao.html" class="inline-btn">sugerir curso</a>
-                  </div>
-        
-               </div>
+                        <button type="button" class="inline-btn" data-toggle="modal" data-target="#sugestaoModal">Sugerir curso</button>
+                    </div>
+                </div>
             </div>
         </section>
+    </div>
+
+    <!-- Modal de Sugestão -->
+    <div class="modal fade" id="sugestaoModal" tabindex="-1" role="dialog" aria-labelledby="sugestaoModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="sugestaoModalLabel">Envie sua sugestão</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo do formulário de sugestão aqui -->
+                    <form id="form-sugerir" action="" method="post" enctype="multipart/form-data">
+                        <p id="sugeri_t">Nome do criador do curso</p>
+                        <input type="text" name="name" placeholder="Digite o nome do autor do curso que deseja sugerir" maxlength="30" class="box-s" id="autor">
+                        <p id="sugeri_t">Área do curso</p>
+                        <input type="text" name="name" placeholder="Digite a área do curso que deseja sugerir" maxlength="50" class="box-s" id="area">
+                        <p id="sugeri_t">Link Playlist</p>
+                        <input type="text" name="link" placeholder="Digite o link da playlist do curso sugerido" maxlength="255" class="box-s" id="link">
+                        <input type="submit" value="Enviar" name="submit" id="submit" id="caixa" class="btn">
+                        <br>
+                        <div id="mensagemErro" ></div>
+                    </form>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
     </div>
 
 <script src="js/script.js"></script>
