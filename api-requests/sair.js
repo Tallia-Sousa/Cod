@@ -1,6 +1,6 @@
 
 const sair = () => {
-    // Remover o token do localStorage
+    // Remove o token do localStorage
     localStorage.removeItem('token');
   
     // Redireciona para a página de login

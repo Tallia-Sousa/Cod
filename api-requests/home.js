@@ -22,10 +22,8 @@ const verificarToken = (token) => {
   .then(response => {
     if (response.status === 200) {
      
-    
-
       //colocar uma mensagem seja bem vindo para os estudantes
-    } else if (response.status === 401 || response.status ==403) {
+    } else if (response.status === 401) {
       
       window.location.href = "/index.html"; 
     }

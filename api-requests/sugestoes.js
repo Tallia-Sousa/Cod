@@ -14,7 +14,7 @@ const sugestoes = () => {
 
   if (!token) {
     window.location.href = "/index.html";
-    return;  // Não continue se não houver token
+    return;  
   }
 
   fetch('https://simple-porter-production.up.railway.app/users/sugestoes', {
@@ -36,17 +36,17 @@ const sugestoes = () => {
       window.location.href = "/index.html";
     }
     else if (response.status == 422) {
-      mostrarMensagemErro("Sugestao Já xiste")
+      mostrarMensagemErro("Sugestão Já Existe")
       limparCampos();
      
     }
     else if (response.status == 200) {
-      mostrarMensagemErro("Sugestao enviada")
+      mostrarMensagemErro("Sugestão Enviada")
       limparCampos();
     
     }
     else if(response.status == 400){
-      mostrarMensagemErro("Precha todos os campos corretamente")
+      mostrarMensagemErro("Precha Todos Os Campos Corretamente")
       limparCampos();
     }
   })
@@ -64,7 +64,7 @@ const sugestoes = () => {
 formulario.addEventListener("submit", function (event) {
   event.preventDefault();
   sugestoes();
-  // limparCampos()
+
 });
 
 function limparCampos() {
