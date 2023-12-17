@@ -5,7 +5,7 @@ const senha = document.getElementById('password');
 
 function autenticarUsuario(){
      //passar a url do endpoint
-	fetch("https://simple-porter-production.up.railway.app/users/login", {
+	fetch("https://coderisebackend-production.up.railway.app/users/login", {
 		//passar o cabeçalho e informar o tipo de dado
 		//que esta  sendo passado
 		headers: {'Content-Type': 'application/json',

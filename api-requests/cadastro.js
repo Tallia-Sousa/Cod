@@ -6,7 +6,7 @@ const senha = document.getElementById("password");
 function cadastrarUsuario() {
  
 
-	fetch("https://simple-porter-production.up.railway.app/users/cadastro", {
+	fetch("https://coderisebackend-production.up.railway.app/users/cadastro", {
 	  headers: {
 		'Content-Type': 'application/json',
 		'Accept': 'application/json',

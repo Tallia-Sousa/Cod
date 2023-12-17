@@ -17,7 +17,7 @@ const sugestoes = () => {
     return;  
   }
 
-  fetch('https://simple-porter-production.up.railway.app/users/sugestoes', {
+  fetch("https://coderisebackend-production.up.railway.app/sugestoes", {
     headers: {
       'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
