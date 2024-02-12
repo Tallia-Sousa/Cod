@@ -8,7 +8,7 @@ const recuperarToken = () => {
         return;
     }
 
-    // função requisiçao
+    
     const perfil = () => {
         fetch("http://localhost:8080/users/perfil", {
             headers: {
