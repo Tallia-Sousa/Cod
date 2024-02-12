@@ -8,7 +8,7 @@ const recuperarToken = () => {
 
 
     const cursosFrontend = () => {
-        fetch("https://coderisebackend-production.up.railway.app/cursos/frontend", {
+        fetch("http://localhost:8080/cursos/frontend", {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',

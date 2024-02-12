@@ -11,7 +11,7 @@ const recuperarToken = () => {
 };
 
 const verificarToken = (token) => {
-  fetch("https://coderisebackend-production.up.railway.app/users/verificarToken", {
+  fetch("http://localhost:8080/users/verificarToken", {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',

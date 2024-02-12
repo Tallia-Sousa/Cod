@@ -10,7 +10,7 @@ const recuperarToken = () => {
 
     // função requisiçao
     const perfil = () => {
-        fetch("https://coderisebackend-production.up.railway.app/users/perfil", {
+        fetch("http://localhost:8080/users/perfil", {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 "Content-Type": "application/json",
