@@ -7,12 +7,32 @@ document.getElementById('esquecerSenhaForm').addEventListener('submit', function
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('mensagem').innerText = data.message;
+    .then(response => {
+        if (response.ok) {
+            mostrarMensagemErro("Verifique seu email, foi enviado um link de redefinição de senha");
+        } else if (response.status === 400) {
+            mostrarMensagemErro("Usuario inválido.");
+        } else if (response.status === 422) {
+            mostrarMensagemErro("O link de redefinição de senha já foi enviado, verifique seu email.");
+        } else {
+            mostrarMensagemErro('Ocorreu um erro ao processar sua solicitação de redefinição de senha.');
+        }
     })
     .catch(error => {
         console.error('Erro:', error);
-        document.getElementById('mensagem').innerText = 'Ocorreu um erro ao processar sua solicitação.';
+        mensagemErro(error.message);
     });
 });
+
+const mensagemErro = document.getElementById("mensagemErro");
+
+function mostrarMensagemErro(message) {
+    mensagemErro.textContent = message;
+    mensagemErro.style.display = "block";
+    mensagemErro.style.fontSize = "1.8rem";  // Tamanho da fonte
+    mensagemErro.style.textAlign = "center";  // Alinhamento no centro
+    mensagemErro.style.color= "red";
+    setTimeout(() => {
+        mensagemErro.style.display = "none";
+    }, 10000);
+}

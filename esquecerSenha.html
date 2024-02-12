@@ -1,42 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esquecer Senha</title>
-</head>
-<body>
-    <h1>Esqueceu sua senha?</h1>
-    <form id="esquecerSenhaForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <button type="submit">Enviar</button>
-    </form>
 
-    <div id="mensagem"></div>
-
-    <script>
-        document.getElementById('esquecerSenhaForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita o envio padrão do formulário
-
-            const formData = new FormData(this);
-
-            fetch('http://localhost:8080/password-reset/esquecerSenha', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('mensagem').innerText = data.message;
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                document.getElementById('mensagem').innerText = 'Ocorreu um erro ao processar sua solicitação.';
-            });
-        });
-    </script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -101,6 +63,8 @@
                <input type="password" name="new_pass" placeholder="entre com sua senha nova" maxlength="20" class="box">
                <p>confirme senha</p>
                <input type="password" name="c_pass" placeholder="confirme sua senha nova" maxlength="20" class="box">-->
+
+               <div id="mensagemErro" ></div>
         
                <input type="submit" value="enviar" name="submit" class="btn">
             </form>

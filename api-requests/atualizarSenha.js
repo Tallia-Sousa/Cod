@@ -4,8 +4,7 @@ const formulario = document.getElementById("esquecerSenhaForm");
 // Extrair o token e o email da URL
 const token = getUrlParameter('token');
 const email = getUrlParameter('email');
-console.log("token: " + token);
-console.log("email: " + email);
+
 
 // Função para obter parâmetros da URL
 function getUrlParameter(name) {
@@ -41,21 +40,24 @@ function atualizarSenha() {
         body: JSON.stringify(dados)
     })
     .then(function (response) {
-        if (response.ok) {
-            console.log("Senha atualizada com sucesso.");
-            // Implemente aqui o que deseja fazer após a senha ser atualizada com sucesso
-        } else {
-            console.log("Erro ao atualizar senha.");
-            // Implemente aqui o que deseja fazer em caso de erro na atualização da senha
-        }
-    })
-    .catch(function (error) {
-        console.error("Erro ao se cadastrar:", error);
-        // Implemente aqui o que deseja fazer em caso de erro
-    });
+		if (response.status === 200) {
+		
+		  mostrarMensagemErro("Senha atualizada com sucesso!");
+		  limparCampos();
+		} 
+		else if(response.status === 400){
+			mostrarMensagemErro("Erro na tentativa de atualizar senha!");
+		}
+	  })
+	  .catch(function (error) {
+		console.error("Error:", error);
+		//implementar msg
+		
+  
+	  });
 }
 
-// Adiciona um ouvinte de evento para o envio do formulário
+//  ouvinte de evento para o envio do formulário
 formulario.addEventListener("submit", function (event) {
     event.preventDefault(); // Previne o comportamento padrão de envio do formulário
     atualizarSenha(); // Chama a função atualizarSenha ao enviar o formulário
@@ -63,66 +65,16 @@ formulario.addEventListener("submit", function (event) {
 
 
 
+const mensagemErro = document.getElementById("mensagemErro");
+function mostrarMensagemErro(message) {
+    mensagemErro.textContent = message;
+    mensagemErro.style.display = "block";
+    mensagemErro.style.fontSize = "1.8rem";  // Tamanho da fonte
+    mensagemErro.style.textAlign = "center";  // Alinhamento no centro
+    mensagemErro.style.color= "red";
+    setTimeout(() => {
+        mensagemErro.style.display = "none";
+    }, 10000);
+}
 
 
-
-
-
-
-
-
-
-// const formulario = document.querySelector("form");
-// const senha = document.getElementById("password");
-
-// // Extrair o token e o email da URL
-// const token = getUrlParameter('token');
-// const email = getUrlParameter('email');
-// console.log("token: " + token);
-// console.log("email: " + email);
-
-// // Função para obter parâmetros da URL
-// function getUrlParameter(name) {
-//     const urlParams = new URLSearchParams(window.location.search);
-//     return urlParams.get(name);
-// }
-
-// function atualizarSenha() {
-//     // Criar objeto com os parâmetros token e email
-//     const dados = {
-//         token: token,
-//         email: email
-//     };
-
-//     // Enviar solicitação PUT para a API com os dados
-//     fetch('http://localhost:8080/password-reset/atualizar', {
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json',
-//         },
-//         method: "PUT",
-//         body: JSON.stringify({
-//             token: dados.token,
-//             email: dados.email,
-//             senha: senha.value
-//         })
-//     })
-//     .then(function (response) {
-//         if (response.ok) {
-//             console.log("Senha atualizada com sucesso.");
-//             // Implemente aqui o que deseja fazer após a senha ser atualizada com sucesso
-//         } else {
-//             console.log("Erro ao atualizar senha.");
-//             // Implemente aqui o que deseja fazer em caso de erro na atualização da senha
-//         }
-//     })
-//     .catch(function (error) {
-//         console.error("Erro ao se cadastrar:", error);
-//         // Implemente aqui o que deseja fazer em caso de erro
-//     });
-// }
-
-// formulario.addEventListener("submit", function (event) {
-//     event.preventDefault();
-//     atualizarSenha();
-// });
