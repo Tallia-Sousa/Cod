@@ -19,7 +19,7 @@ function atualizarSenha() {
 
     // Verifica se a senha e a confirmação de senha coincidem
     if (novaSenha !== confirmarSenha) {
-        console.log("As senhas não coincidem.");
+       mostrarMensagemErro("As senhas não coincidem.");
         return; // Aborta a função se as senhas não coincidirem
     }
 
@@ -30,31 +30,32 @@ function atualizarSenha() {
         senha: novaSenha
     };
 
-    // Envia a solicitação PUT para a API com os dados
+
     fetch('http://localhost:8080/password-reset/atualizar', {
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        method: "PUT",
-        body: JSON.stringify(dados)
-    })
-    .then(function (response) {
-		if (response.status === 200) {
-		
-		  mostrarMensagemErro("Senha atualizada com sucesso!");
-		  limparCampos();
-		} 
-		else if(response.status === 400){
-			mostrarMensagemErro("Erro na tentativa de atualizar senha!");
-		}
-	  })
-	  .catch(function (error) {
-		console.error("Error:", error);
-		//implementar msg
-		
-  
-	  });
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    },
+    method: "PUT",
+    body: JSON.stringify(dados)
+})
+.then(function (response) {
+    if (response.status === 200) {
+        mostrarMensagemSucesso("Senha atualizada com sucesso!");
+        limparCampos();
+    } else if(response.status === 400) {
+        response.json().then(function(data) {
+            mostrarMensagemErro(data.message);
+        });
+    }
+})
+.catch(function (error) {
+    console.error("Error:", error);
+    mostrarMensagemErro("Erro de comunicação com o servidor.");
+});
+
+
+    // // Envia a solicitação PUT para a API com os dado
 }
 
 //  ouvinte de evento para o envio do formulário
